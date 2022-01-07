@@ -98,3 +98,7 @@ def delete_user(id_user: int):
 def patch_all_users():
   result_searched_api = User.request_codewars_api_of_all_users()
   return jsonify({"message": result_searched_api}), 200
+
+
+def hielol():
+  return {"message": "hi"}

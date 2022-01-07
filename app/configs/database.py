@@ -5,9 +5,9 @@ from dotenv import load_dotenv
 import os
 load_dotenv()
 
-password_mongodb_atlas_user = os.getenv("PASSWORD_MONGO_ATLAS_USER")
+uri = os.environ.get("MONGODB_URI")
 
-client = MongoClient(f"mongodb+srv://calebe-navarro:{password_mongodb_atlas_user}@cluster0.zuv0r.mongodb.net/codewars-kenzie?retryWrites=true&w=majority")
+client = MongoClient(uri)
 
 
 db = client.test

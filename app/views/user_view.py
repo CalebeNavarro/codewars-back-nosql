@@ -17,7 +17,9 @@ client = MongoClient(uri)
 db = client.test
 
 def hielol():
-  return {"message": "hi"}
+  aa = db.users.find_one({"id": 1})
+  del aa['_id']
+  return jsonify({"message": aa})
 
 
 def get_all_users():

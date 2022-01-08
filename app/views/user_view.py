@@ -12,7 +12,7 @@ load_dotenv()
 
 uri = os.environ.get("MONGODB_URI")
 
-client = MongoClient(uri)
+client = MongoClient(uri, connect=False)
 
 db = client.test
 

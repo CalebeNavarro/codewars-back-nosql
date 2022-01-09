@@ -4,23 +4,6 @@ from flask import jsonify, request
 import ipdb
 from app.exc.user_exception import InvalidFields, UserNotFound, UserByFieldNotFound, ConflitUserName, UserNameInvalid
 
-from pymongo import MongoClient
-
-from dotenv import load_dotenv
-import os
-load_dotenv()
-
-uri = os.environ.get("MONGODB_URI")
-
-client = MongoClient(uri, connect=False)
-
-db = client.test
-
-def hielol():
-  aa = db.users.find_one({"id": 1})
-  del aa['_id']
-  return jsonify({"message": aa})
-
 
 def get_all_users():
   name = request.args.get("name", "")
@@ -111,9 +94,3 @@ def delete_user(id_user: int):
   except UserNotFound as e:
     return {"message": str(e)}, 404
   return {}, 204
-
-
-def patch_all_users():
-  result_searched_api = User.request_codewars_api_of_all_users()
-  return jsonify({"message": result_searched_api}), 200
-

@@ -2,8 +2,6 @@ from flask import jsonify, request
 import ipdb
 from app.model.enabler_model import Enabler
 from app.exc.enabler_exception import InvalidFields, EnablerNotFound, EnalberByFieldNotFound, ConflitUserName
-import requests
-import asyncio
 
 
 def get_all_enablers():
@@ -77,7 +75,3 @@ def delete_enabler(id_enabler: int):
   except EnablerNotFound as e:
     return {"message": str(e)}, 404
   return {}, 204
-
-
-def mist():
-  return {"mesage": "Hello motfu"}

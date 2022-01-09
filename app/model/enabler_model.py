@@ -11,6 +11,7 @@ class Enabler():
     self.id = id
     self.name = name
     self.username = username
+    self.current_honor = 0
     self.honors = []
     self.users = []
 

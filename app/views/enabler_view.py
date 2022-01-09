@@ -1,7 +1,9 @@
 from flask import jsonify, request
 import ipdb
+
 from app.model.enabler_model import Enabler
 from app.exc.enabler_exception import InvalidFields, EnablerNotFound, EnalberByFieldNotFound, ConflitUserName
+from app.exc.person_exception import PersonNotFound
 
 
 def get_all_enablers():
@@ -27,9 +29,9 @@ def get_all_enablers():
 def get_enabler_by_id(id_enabler: int):
   try:
     enabler = Enabler.find_enabler_by_id(id_enabler)
-  except EnablerNotFound as e:
+  except PersonNotFound as e:
     return {"message": str(e)}, 404
-  return jsonify({'enabler': enabler})
+  return jsonify({'enabler': enabler}), 200
 
 
 def post_enabler():
@@ -38,7 +40,7 @@ def post_enabler():
     if not data or not data['username']:
       return {'message': 'Missing Json'}, 403
   except KeyError:
-    return {"message": "Missing Key"}
+    return {"message": "Missing Key"}, 404
 
   try:
     Enabler.id_increment(data)

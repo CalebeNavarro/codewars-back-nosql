@@ -7,7 +7,7 @@ from app.controllers.db_controllers import DbController
 
 
 class Codewars():
-
+  
   def __init__(self) -> None:
       pass
 

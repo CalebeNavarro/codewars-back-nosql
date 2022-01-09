@@ -1,4 +1,5 @@
 from app.exc.enabler_exception import EnablerNotFound
+from app.exc.person_exception import PersonNotFound
 from app.model.user_model import User
 from flask import jsonify, request
 import ipdb
@@ -28,9 +29,9 @@ def get_all_users():
 def get_user_by_id(id_user: int):
   try:
     user = User.find_user_by_id(id_user)
-  except UserNotFound as e:
-    return {"message": str(e)}, 404
-  return jsonify({'user': user})
+  except PersonNotFound as e:
+    return jsonify({"message": str(e)})
+  return jsonify({'user': user}), 200
 
 
 def post_user():
@@ -62,7 +63,7 @@ def post_users_in_enabler(id_enabler: int):
   except EnablerNotFound as e:
     return {"message": str(e)}, 404
   except TypeError as e:
-    return {'message': str(e).split('an ')[1]}
+    return {'message': str(e).split('an ')[1]}, 400
   except KeyError as e:
     return {"message": f"missing field {e}"}, 400
 

@@ -2,7 +2,8 @@ from flask import current_app
 from app.controllers.db_controllers import DbController
 import ipdb
 from app.exc.enabler_exception import InvalidFields, EnablerNotFound, EnalberByFieldNotFound, ConflitUserName
-import requests
+from app.exc.person_exception import PersonNotFound
+
 
 class Enabler():
   validate_fields = ['username', 'name']
@@ -21,19 +22,14 @@ class Enabler():
 
   @staticmethod
   def get_all_enablers():
-    all_enablers = list(current_app.db.enablers.find())
-    for enabler in all_enablers:
-      del enabler['_id']
-    return all_enablers
+    return DbController.find_all_person('enablers')
 
   @staticmethod
   def find_enabler_by_id(id_enabler: int):
-    enabler = current_app.db.enablers.find_one({"id": id_enabler})
-    if not enabler:
-      raise EnablerNotFound("enabler not found")
-    del enabler['_id']
-    return enabler
-
+    try:
+      return DbController.find_one_person_by_id('enablers', id_enabler)
+    except PersonNotFound:
+      raise PersonNotFound("Enabler not found")
 
   def create_enabler(self):
     is_already_created = current_app.db.enablers.find_one({"username": self.username})
@@ -68,13 +64,13 @@ class Enabler():
 
   @staticmethod
   def delete_enabler(id_enabler: int):
-    is_enabler_deleted = DbController.delete_person(id_enabler, 'enablers')
+    is_enabler_deleted = DbController.delete_person('enablers', id_enabler)
     if not is_enabler_deleted:
       raise EnablerNotFound("Enabler not found")
   
   @staticmethod
   def find_enabler_by_parameter(field: str, name: str):
-    enabler_found = current_app.db.enablers.find_one({field: name})
+    enabler_found = DbController.find_one_person_by_parameter('enablers', field, name)
     if not enabler_found:
       raise EnalberByFieldNotFound(f'{name} is not in field {field}.')
     del enabler_found["_id"]

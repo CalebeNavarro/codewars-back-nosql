@@ -4,6 +4,7 @@ from app.model.user_model import User
 from flask import jsonify, request
 import ipdb
 from app.exc.user_exception import InvalidFields, UserNotFound, UserByFieldNotFound, ConflitUserName, UserNameInvalid
+from flask_jwt_extended import jwt_required
 
 
 def get_all_users():
@@ -53,6 +54,7 @@ def post_user():
   return jsonify(user_created), 201
 
 
+@jwt_required()
 def post_users_in_enabler(id_enabler: int):
   data = request.json
   if not data:
@@ -70,6 +72,7 @@ def post_users_in_enabler(id_enabler: int):
   return jsonify({"message": result_searched_api}), 200
 
 
+@jwt_required()
 def update_user(id_user: int):
   data = request.json
   if not data:
@@ -89,6 +92,7 @@ def update_user(id_user: int):
   return {"message": user_updated}, 200
 
 
+@jwt_required()
 def delete_user(id_user: int):
   try:
     User.delete_user(id_user)

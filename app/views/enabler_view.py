@@ -4,11 +4,12 @@ import ipdb
 from app.model.enabler_model import Enabler
 from app.exc.enabler_exception import InvalidFields, EnablerNotFound, EnalberByFieldNotFound, ConflitUserName
 from app.exc.person_exception import PersonNotFound
-
+from flask_jwt_extended import jwt_required
 
 def get_all_enablers():
   name = request.args.get("name", "")
   username = request.args.get("username", "")
+  
   if name:
     try:
       enabler_found = Enabler.find_enabler_by_parameter("name", name)
@@ -34,6 +35,7 @@ def get_enabler_by_id(id_enabler: int):
   return jsonify({'enabler': enabler}), 200
 
 
+@jwt_required()
 def post_enabler():
   data = request.json
   try:
@@ -54,6 +56,7 @@ def post_enabler():
   return jsonify(enabler_created), 201
 
 
+@jwt_required()
 def patch_user(id_enabler: int):
   data = request.json
   if not data:
@@ -71,6 +74,7 @@ def patch_user(id_enabler: int):
   return {"message": enabler_updated}, 201
 
 
+@jwt_required()
 def delete_enabler(id_enabler: int):
   try:
     Enabler.delete_enabler(id_enabler)

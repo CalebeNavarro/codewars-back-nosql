@@ -6,6 +6,15 @@ from app.exc.person_exception import PersonNotFound
 class DbController():
   def __init__(self) -> None:
       pass
+
+  @staticmethod
+  def access_db(username, password: str):
+    account = current_app.db.accounts.find_one({"password": password})
+    if not account:
+      return False
+    elif account["username"] != username:
+      return False
+    return True
   
   @staticmethod
   def id_increment(data: dict, person: str):

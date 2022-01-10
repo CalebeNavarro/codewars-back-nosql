@@ -35,6 +35,7 @@ def get_user_by_id(id_user: int):
   return jsonify({'user': user}), 200
 
 
+@jwt_required()
 def post_user():
   data = request.json
   if not data:

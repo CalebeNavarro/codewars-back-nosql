@@ -4,12 +4,14 @@ import ipdb
 from app.exc.enabler_exception import InvalidFields, EnablerNotFound, EnalberByFieldNotFound, ConflitUserName
 from app.exc.person_exception import PersonNotFound
 
+from uuid import uuid4
+
 
 class Enabler():
   validate_fields = ['username', 'name']
   
-  def __init__(self, id: int, name: str, username: str) -> None:
-    self.id = id
+  def __init__(self, name: str, username: str) -> None:
+    self.id = str(uuid4())
     self.name = name
     self.username = username
     self.current_honor = 0

@@ -5,12 +5,13 @@ from app.exc.person_exception import PersonNotFound
 from app.exc.user_exception import InvalidFields, UserNotFound, UserByFieldNotFound, ConflitUserName, UserNameInvalid
 from app.exc.enabler_exception import EnablerNotFound
 
+from uuid import uuid4
 
 class User():
   validate_fields = ['username', 'name']
 
-  def __init__(self, id: int, name: str, username: str) -> None:
-    self.id = id
+  def __init__(self, name: str, username: str) -> None:
+    self.id = str(uuid4())
     self.name = name
     self.username = username
     self.current_honor = 0
@@ -63,7 +64,7 @@ class User():
     del enabler['_id']
     
     for user_data in data["users"]:
-      User.id_increment(user_data)
+      # User.id_increment(user_data)
       user = User(**user_data)
       try:
         user_created = user.create_user()

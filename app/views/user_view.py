@@ -42,7 +42,7 @@ def post_user():
     return {'message': 'Missing Json'}, 400
 
   try:
-    User.id_increment(data)
+    # User.id_increment(data)
     user = User(**data)
     user_created = user.create_user()
   except TypeError as e:

@@ -27,7 +27,7 @@ def get_all_enablers():
   return jsonify(enabler_list), 200
 
 
-def get_enabler_by_id(id_enabler: int):
+def get_enabler_by_id(id_enabler: str):
   try:
     enabler = Enabler.find_enabler_by_id(id_enabler)
   except PersonNotFound as e:
@@ -45,7 +45,7 @@ def post_enabler():
     return {"message": "Missing Key"}, 404
 
   try:
-    Enabler.id_increment(data)
+    # Enabler.id_increment(data)
     enabler = Enabler(**data)
     enabler_created = enabler.create_enabler()
   except TypeError as e:

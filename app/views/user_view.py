@@ -31,8 +31,8 @@ def get_user_by_id(id_user: int):
   try:
     user = User.find_user_by_id(id_user)
   except PersonNotFound as e:
-    return jsonify({"message": str(e)})
-  return jsonify({'user': user}), 200
+    return jsonify({"message": str(e)}), 404
+  return jsonify(user), 200
 
 
 @jwt_required()

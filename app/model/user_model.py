@@ -18,10 +18,6 @@ class User():
     self.honors = []
 
   @staticmethod
-  def id_increment(data: dict):
-    DbController.id_increment(data, "user")
-
-  @staticmethod
   def get_all_users():
     return DbController.find_all_person('users')
 
@@ -64,7 +60,6 @@ class User():
     del enabler['_id']
     
     for user_data in data["users"]:
-      # User.id_increment(user_data)
       user = User(**user_data)
       try:
         user_created = user.create_user()

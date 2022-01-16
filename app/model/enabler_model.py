@@ -19,10 +19,6 @@ class Enabler():
     self.users = []
 
   @staticmethod
-  def id_increment(data: dict):
-    DbController.id_increment(data, "enabler")
-
-  @staticmethod
   def get_all_enablers():
     return DbController.find_all_person('enablers')
 

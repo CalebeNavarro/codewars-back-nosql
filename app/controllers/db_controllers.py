@@ -15,14 +15,6 @@ class DbController():
     elif account["username"] != username:
       return False
     return True
-  
-  @staticmethod
-  def id_increment(data: dict, person: str):
-    current_app.db.id_count.find_one_and_update(
-      {"id": person},
-      {"$inc": {"count": 1}}
-    )
-    data['id'] = current_app.db.id_count.find_one({"id": person})['count']
 
   @staticmethod
   def delete_person(collection: str, id_user: int):

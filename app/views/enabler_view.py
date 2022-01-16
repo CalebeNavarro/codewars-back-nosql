@@ -45,7 +45,6 @@ def post_enabler():
     return {"message": "Missing Key"}, 404
 
   try:
-    # Enabler.id_increment(data)
     enabler = Enabler(**data)
     enabler_created = enabler.create_enabler()
   except TypeError as e:

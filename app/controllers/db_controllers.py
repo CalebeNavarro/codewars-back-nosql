@@ -26,6 +26,18 @@ class DbController():
 
   @staticmethod
   def delete_person(collection: str, id_user: int):
+    if (collection == "users"):
+      enablers = current_app.db['enablers'].find()
+      for enable in enablers:
+        for user in enable['users']:
+          
+          if user == id_user:
+            id = enable['id']
+            current_app.db['enablers'].find_one_and_update(
+              {"id": id},
+              {"$pull": {"users": {"$in": [id_user]}}}
+            )
+
     return current_app.db[collection].find_one_and_delete({"id": id_user})
 
   @staticmethod

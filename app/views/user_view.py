@@ -8,6 +8,12 @@ from flask_jwt_extended import jwt_required
 
 
 def get_all_users():
+  print("gifdgifdgidfi")
+  print("gifdgifdgidfi")
+  print("gifdgifdgidfi")
+  print("gifdgifdgidfi")
+  print("gifdgifdgidfi")
+  print("gifdgifdgidfi")
   name = request.args.get("name", "")
   username = request.args.get("username", "")
   if name:

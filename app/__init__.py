@@ -1,6 +1,13 @@
-from flask import Flask, request, jsonify
+from time import sleep
+from flask import Flask
 from app.configs import database, env_configs, jwt
 from app.routes import api_blueprint
+from app.configs import commands
+from apscheduler.schedulers.blocking import BlockingScheduler
+import os
+from app.model.codewars_model import Codewars
+import asyncio
+
 
 def create_app():
   app = Flask(__name__)
@@ -10,5 +17,7 @@ def create_app():
   jwt.init_app(app)
 
   app.register_blueprint(api_blueprint.bp)
+
+  commands.init_app(app)
 
   return app

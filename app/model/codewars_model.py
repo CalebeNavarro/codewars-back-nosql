@@ -5,6 +5,8 @@ from app.controllers.datetime_controllers import DatetimeControllers
 from app.controllers.codewars_controllers import CodewarsControllers
 from app.controllers.db_controllers import DbController
 
+import asyncio
+
 
 class Codewars():
   
@@ -20,7 +22,7 @@ class Codewars():
         is_update = DatetimeControllers.is_person_already_been_updated_today(current_person)
 
         if not is_update:
-          DbController.update_increment_object_honor_person(current_person, collection, request['honor'])
+         DbController.update_increment_object_honor_person(current_person, collection, request['honor'])
         else:
           DbController.update_current_honor_person(current_person, collection, request['honor'])
 
@@ -31,7 +33,6 @@ class Codewars():
         del current_person['_id']
         result_searched_api.get("incorrect_usernames").get("people").append(current_person)
         result_searched_api.get("incorrect_usernames")["count"] += 1
-        pass
   
   @classmethod
   def update_users_and_enablers(clt):

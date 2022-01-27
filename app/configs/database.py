@@ -7,7 +7,7 @@ load_dotenv()
 
 
 
-if (os.environ.get("FLASK_ENV") == "development"):
+if (os.environ.get("FLASK_ENV") == "development "):
   client = MongoClient("mongodb://localhost:27017/")
   db = client["codewars-kenzie"]
 else:

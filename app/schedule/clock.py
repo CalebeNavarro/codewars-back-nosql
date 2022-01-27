@@ -1,10 +1,12 @@
 from apscheduler.schedulers.blocking import BlockingScheduler
+import subprocess
+
 
 sched = BlockingScheduler()
 
-@sched.scheduled_job('interval', minutes=1)
+@sched.scheduled_job('interval', minutes=1.5)
 def timed_job():
-    print('This job is run every three minutes.')
+    subprocess.run(["flask routine codewars"])
 
 @sched.scheduled_job('cron', day_of_week='mon-fri', hour=17)
 def scheduled_job():

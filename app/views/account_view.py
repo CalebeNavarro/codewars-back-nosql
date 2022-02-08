@@ -1,6 +1,9 @@
 from flask import request, jsonify
-from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
 from app.controllers.db_controllers import DbController
+
+from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
+from flask_jwt_extended import create_refresh_token
+from flask_jwt_extended import JWTManager
 
 
 def login():
@@ -23,3 +26,10 @@ def protected():
   # do token quando necessário
   current_user = get_jwt_identity()
   return jsonify(logged_in_as=current_user), 200
+
+
+@jwt_required(refresh=True)
+def refresh():
+    identity = get_jwt_identity()
+    access_token = create_access_token(identity=identity)
+    return jsonify(access_token=access_token)

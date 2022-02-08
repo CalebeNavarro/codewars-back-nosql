@@ -4,3 +4,4 @@ venv/
 reset_tables.py
 testes.py
 create_admin_user.py
+myDevs.json

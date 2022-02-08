@@ -1,5 +1,3 @@
-import asyncio
-import requests
 from app.model.codewars_model import Codewars
 
 

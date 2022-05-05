@@ -1,5 +1,5 @@
 import requests
-import asyncio
+
 
 class CodewarsControllers():
   def __init__(self) -> None:

@@ -6,6 +6,9 @@
 
 [Sobre](#sobre) • [Tecnologias](#tecnologias) • [Licença](#licença)
 
+## Repositório Front-End
+- [Repositório](https://github.com/CalebeNavarro/codewars-front-nosql)
+
 ## Sobre
 
 Projeto desenvolvido para aperfeiçoar o conhecimento em NoSQL, também com o intuito de resolver um problema interno no curso Kenzie Academy Brasil. No curso, durante os bimestres, é comum que os alunos façam [Codewars](https://www.codewars.com/), onde é usado para conhecer/treinar o uso da linguagem, incluindo aprimoramento na lógica de programação. Porém nunca tinhamos acesso a um banco de dados da progressão do alunos. 

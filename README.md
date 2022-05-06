@@ -10,7 +10,7 @@
 
 Projeto desenvolvido para aperfeiçoar o conhecimento em NoSQL, também com o intuito de resolver um problema interno no curso Kenzie Academy Brasil. No curso, durante os bimestres, é comum que os alunos façam [Codewars](https://www.codewars.com/), onde é usado para conhecer/treinar o uso da linguagem, incluindo aprimoramento na lógica de programação. Porém nunca tinhamos acesso a um banco de dados da progressão do alunos. 
 
-A api, armazena as informações do usuário e também a data e a quantidade de honors (pontos que você ganha realizando problemas) que o usuário tem no dia. Com a [pagína Web](https://codewars-kenzie-xi.vercel.app/dashboard), você tem acesso ao gráfico dos alunos com suas respectivas datas e honors. Também colocado em forma de classificação, incentivando ainda mais a resoluções de problemas, para que seu ponto seja aumentado, incluindo dos facilitadores (responsável pelos alunos).
+A api, armazena as informações do usuário e também a data e a quantidade de honors (pontos que você ganha realizando problemas) que o usuário tem no dia. Com a [pagína Web](https://kenzie-codewars.vercel.app), você tem acesso ao gráfico dos alunos com suas respectivas datas e honors. Também colocado em forma de classificação, incentivando ainda mais a resoluções de problemas, para que seu ponto seja aumentado, incluindo dos facilitadores (responsável pelos alunos).
 
 
 ## Tecnologias
